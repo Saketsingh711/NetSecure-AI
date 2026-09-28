@@ -41,13 +41,35 @@ Open `http://127.0.0.1:8000/docs`.
 
 ## PostgreSQL mode
 
-Install Docker Desktop, then from the project root:
+NETSECURE AI supports both **native PostgreSQL** and **Docker-based PostgreSQL**. Docker is optional.
+
+### Option 1 — Native PostgreSQL
+
+Install PostgreSQL on your system and create the database:
+
+```sql
+CREATE DATABASE netsecure_ai;
+```
+
+Set `.env`:
+
+```env
+DATABASE_URL=postgresql+psycopg://postgres:YOUR_PASSWORD@localhost:5432/netsecure_ai
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+Replace `YOUR_PASSWORD` with your PostgreSQL password.
+
+### Option 2 — PostgreSQL with Docker
+
+If you prefer Docker, install Docker Desktop and run from the project root:
 
 ```powershell
 docker compose up -d
 ```
 
-Set `.env`:
+Then set `.env`:
 
 ```env
 DATABASE_URL=postgresql+psycopg://netsecure:netsecure@localhost:5432/netsecure_ai
@@ -56,6 +78,8 @@ GEMINI_MODEL=gemini-2.5-flash
 ```
 
 Restart the backend.
+
+> **Note:** Docker is optional. You can use either a native PostgreSQL installation or Docker-based PostgreSQL.
 
 ## Gemini
 
