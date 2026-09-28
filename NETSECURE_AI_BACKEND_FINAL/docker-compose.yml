@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: netsecure-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: netsecure_ai
+      POSTGRES_USER: netsecure
+      POSTGRES_PASSWORD: netsecure
+    ports:
+      - "5432:5432"
+    volumes:
+      - netsecure_pgdata:/var/lib/postgresql/data
+
+volumes:
+  netsecure_pgdata:

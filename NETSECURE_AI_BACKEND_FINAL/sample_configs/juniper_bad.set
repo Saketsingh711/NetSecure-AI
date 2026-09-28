@@ -1,0 +1,7 @@
+set system host-name SRX-EDGE
+set system services telnet
+set system services ssh
+set system services web-management http
+set system ntp server 10.0.0.10
+set snmp community public
+set system custom-unfamiliar-feature enable

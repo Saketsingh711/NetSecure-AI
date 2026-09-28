@@ -1,0 +1,3 @@
+set system host-name SRX-TEST
+set system services ssh
+set system quantum-encryption-module enable

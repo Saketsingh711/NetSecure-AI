@@ -1,0 +1,3 @@
+set system host-name SRX-LEARN
+set system services ssh
+set system custom-ssh-management enable

@@ -1,0 +1,103 @@
+- rule_id: MGMT-001
+  title: Telnet must be disabled
+  field: management.telnet_enabled
+  operator: equals
+  expected: false
+  severity: HIGH
+  framework: [CIS, NIST]
+  remediation:
+    default: Disable Telnet and use SSH for secure remote management.
+    cisco: Disable Telnet under the VTY lines and permit SSH only.
+    fortinet: Disable administrative Telnet access.
+    juniper: Remove the Junos Telnet service and use SSH.
+
+- rule_id: MGMT-002
+  title: SSH should be enabled for secure remote management
+  field: management.ssh_enabled
+  operator: equals
+  expected: true
+  severity: HIGH
+  framework: [CIS, NIST]
+  remediation:
+    default: Enable SSH for secure remote administration.
+    cisco: Configure SSH and permit SSH on VTY lines.
+    fortinet: Enable administrative SSH access only where required.
+    juniper: Configure the Junos SSH service.
+
+- rule_id: MGMT-003
+  title: HTTP management should be disabled
+  field: management.http_enabled
+  operator: equals
+  expected: false
+  severity: HIGH
+  framework: [CIS]
+  remediation:
+    default: Disable plaintext HTTP management and use HTTPS or SSH.
+    cisco: Disable the IOS HTTP server.
+    fortinet: Disable administrative HTTP access.
+    juniper: Remove the Junos HTTP web-management service.
+
+- rule_id: AUTH-001
+  title: Centralized authentication should be configured
+  field: authentication.aaa_enabled
+  operator: equals
+  expected: true
+  severity: HIGH
+  framework: [CIS, NIST]
+  remediation:
+    default: Configure centralized authentication such as AAA, RADIUS, TACACS+ or an equivalent supported mechanism.
+    cisco: Enable AAA new-model and configure the required AAA method lists.
+    fortinet: Configure an appropriate RADIUS, LDAP or TACACS+ authentication method.
+    juniper: Configure a supported centralized authentication order.
+
+- rule_id: LOG-001
+  title: Security logging should be enabled
+  field: logging.enabled
+  operator: equals
+  expected: true
+  severity: MEDIUM
+  framework: [CIS, NIST]
+  remediation:
+    default: Enable security event logging and configure appropriate log destinations.
+    cisco: Configure logging destinations and appropriate severity levels.
+    fortinet: Enable FortiGate logging and required log destinations.
+    juniper: Configure system syslog destinations.
+
+- rule_id: NTP-001
+  title: Network time synchronization should be configured
+  field: ntp.enabled
+  operator: equals
+  expected: true
+  severity: LOW
+  framework: [CIS, NIST]
+  remediation:
+    default: Configure trusted NTP servers for consistent event timestamps.
+    cisco: Configure trusted NTP servers.
+    fortinet: Configure FortiGate NTP servers.
+    juniper: Configure trusted Junos NTP servers.
+
+- rule_id: NET-001
+  title: SNMPv2 community strings should not be used
+  field: network_security.snmp_v2_community
+  operator: equals
+  expected: false
+  severity: HIGH
+  framework: [CIS]
+  remediation:
+    default: Replace insecure SNMPv2 community-based management with a stronger authenticated mechanism such as SNMPv3 where supported.
+    cisco: Replace SNMPv2 community strings with SNMPv3 where supported.
+    fortinet: Use stronger authenticated SNMP management where supported.
+    juniper: Use SNMPv3 or another supported authenticated mechanism.
+
+- rule_id: MGMT-004
+  title: Management access should be restricted
+  field: management.management_acl
+  operator: equals
+  expected: true
+  severity: MEDIUM
+  framework: [CIS, NIST]
+  remediation:
+    default: Restrict management access to approved administrative sources.
+    cisco: Apply an access-class or equivalent management ACL to administrative access.
+    fortinet: Configure trusted hosts or equivalent administrative source restrictions.
+    juniper: Apply an appropriate management firewall filter.
